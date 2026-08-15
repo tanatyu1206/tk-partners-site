@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tanatyu1206.github.io/tk-partners-site/sitemap.xml
