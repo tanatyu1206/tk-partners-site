@@ -192,23 +192,28 @@
     margin-top: 56px;
   }
   .issue {
-    background: #fff;
-    padding: 34px 26px;
+    background: transparent;
+    border: 1px dashed #b8b4ad;
+    padding: 30px 24px;
     border-radius: 6px;
   }
-  .issue .num {
-    font-size: 12px;
-    letter-spacing: .3em;
-    color: var(--navy-soft);
+  .issue .tag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .2em;
+    color: var(--ink-light);
+    border: 1px solid #b8b4ad;
+    border-radius: 99px;
+    padding: 2px 12px;
   }
   .issue h3 {
     font-size: 15px;
     font-weight: 600;
-    margin: 12px 0 12px;
-    letter-spacing: .1em;
-    color: var(--navy);
+    margin: 14px 0 10px;
+    letter-spacing: .08em;
+    color: var(--ink);
   }
-  .issue p { font-size: 12.5px; color: var(--ink); }
+  .issue p { font-size: 12.5px; color: var(--ink-light); }
   .issues-close {
     text-align: center;
     margin-top: 48px;
@@ -232,9 +237,13 @@
     text-align: center;
   }
   .service .num {
-    font-size: 12px;
-    letter-spacing: .3em;
-    color: var(--ink-light);
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: .24em;
+    color: #fff;
+    background: var(--navy);
+    border-radius: 99px;
+    padding: 4px 16px;
   }
   .service h3 {
     font-size: 18px;
@@ -468,22 +477,22 @@
     </p>
     <div class="issues">
       <div class="issue">
-        <div class="num">01</div>
+        <span class="tag">お悩み</span>
         <h3>営業が“人”に依存</h3>
         <p>売れる理由が個人の経験と勘に依存。担当が辞めると顧客・案件ごと失われる。</p>
       </div>
       <div class="issue">
-        <div class="num">02</div>
+        <span class="tag">お悩み</span>
         <h3>提案が毎回ゼロから手作り</h3>
         <p>提案資料・トークが標準化されず、商談ごとに品質がばらつき、準備に時間を浪費。</p>
       </div>
       <div class="issue">
-        <div class="num">03</div>
+        <span class="tag">お悩み</span>
         <h3>新人が立ち上がらない</h3>
         <p>教える側も体系を持たないため戦力化に時間がかかり、早期離職につながる。</p>
       </div>
       <div class="issue">
-        <div class="num">04</div>
+        <span class="tag">お悩み</span>
         <h3>案件の進捗が見えない</h3>
         <p>進捗・受注確度が可視化されず“どんぶり”。打ち手が後手に回ってしまう。</p>
       </div>
@@ -494,19 +503,19 @@
     </p>
     <div class="services">
       <a class="service" href="service1.html">
-        <div class="num">01</div>
+        <div class="num">SERVICE 01</div>
         <h3>営業の型化</h3>
         <p>社長やトップ営業の勝ちパターンを言語化・標準化。提案資料・トークスクリプト・営業研修を通じて、誰でも再現できるかたちに変えます。</p>
         <span class="more">詳しく見る →</span>
       </a>
       <a class="service" href="service2.html">
-        <div class="num">02</div>
+        <div class="num">SERVICE 02</div>
         <h3>営業の仕組み構築</h3>
         <p>案件進捗・受注確度のモニタリング設計、人事制度・経営戦略への接続まで。型が回り続ける「組織のエンジン」を設計します。</p>
         <span class="more">詳しく見る →</span>
       </a>
       <a class="service" href="service3.html">
-        <div class="num">03</div>
+        <div class="num">SERVICE 03</div>
         <h3>戦略・戦術の設計</h3>
         <p>誰に・何を・どう売るか。市場での勝ち筋と理想顧客像を定義し、チャネル・施策・KPIへ分解して現場の実行まで落とし込みます。</p>
         <span class="more">詳しく見る →</span>
