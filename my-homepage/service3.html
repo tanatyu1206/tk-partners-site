@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>戦略・戦術の設計｜TKパートナーズ</title>
+<meta name="description" content="誰に・何を・どう売るか。市場での勝ち筋を定義し、現場の実行レベルまで一気通貫で落とし込みます。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2324304d'/%3E%3Ctext x='32' y='43' font-family='Helvetica,Arial,sans-serif' font-size='26' font-weight='bold' fill='white' text-anchor='middle'%3ETK%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --ink: #3a3a3a;
+    --ink-light: #8a8783;
+    --navy: #24304d;
+    --navy-soft: #46557a;
+    --bg-gray: #f0efed;
+    --line: #e3e1de;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+    color: var(--ink);
+    line-height: 1.9;
+    letter-spacing: .08em;
+    font-size: 15px;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 32px 0 0; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1120px; margin: 0 auto; padding: 0 24px; flex-wrap: wrap; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; letter-spacing: .2em; color: var(--navy); }
+  .logo-mark { width: 32px; height: 32px; background: var(--navy); border-radius: 4px 4px 14px 4px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; }
+  nav ul { display: flex; gap: 32px; font-size: 13px; letter-spacing: .14em; }
+  nav a { position: relative; padding-bottom: 4px; }
+  nav a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--navy); transition: width .3s; }
+  nav a:hover::after { width: 100%; }
+
+  .page-head { background: var(--bg-gray); margin-top: 28px; padding: 80px 0; text-align: center; }
+  .page-head .eyebrow { font-size: 12px; letter-spacing: .34em; color: var(--navy-soft); }
+  .page-head h1 { margin-top: 16px; font-size: 28px; font-weight: 600; letter-spacing: .18em; color: var(--navy); }
+  .page-head p { margin: 24px auto 0; max-width: 640px; padding: 0 24px; font-size: 14px; }
+
+  main section { padding: 72px 0; }
+  main section + section { padding-top: 0; }
+  h2.label { font-size: 18px; font-weight: 600; letter-spacing: .2em; color: var(--navy); text-align: center; }
+  h2.label small { display: block; font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-top: 6px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; margin-top: 44px; }
+  .card { background: var(--bg-gray); border-radius: 6px; padding: 30px 26px; }
+  .card h3 { font-size: 15px; font-weight: 600; letter-spacing: .1em; color: var(--navy); }
+  .card .num { font-size: 11px; letter-spacing: .3em; color: var(--navy-soft); margin-bottom: 8px; }
+  .card p { margin-top: 10px; font-size: 13px; }
+
+  .detail { margin-top: 44px; }
+  .detail dl { border-top: 1px solid var(--line); }
+  .detail dt { padding: 26px 8px 4px; font-weight: 600; letter-spacing: .14em; color: var(--navy); font-size: 15px; }
+  .detail dd { padding: 0 8px 26px; border-bottom: 1px solid var(--line); font-size: 14px; }
+
+  .photo-ph { aspect-ratio: 16 / 7; background: #dedbd6; display: flex; align-items: center; justify-content: center; color: #9a9894; font-size: 13px; letter-spacing: .2em; margin-top: 44px; }
+  img.photo { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; display: block; margin-top: 44px; }
+
+  .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; }
+  .meta div { background: #fff; padding: 18px 20px; }
+  .meta .k { font-size: 11px; letter-spacing: .24em; color: var(--navy-soft); }
+  .meta .v { margin-top: 4px; font-size: 14px; }
+
+  .cta { background: var(--bg-gray); text-align: center; padding: 72px 24px !important; }
+  .cta p { font-size: 14px; }
+  .btn { display: inline-block; margin-top: 30px; padding: 16px 60px; background: var(--navy); color: #fff; font-size: 13.5px; letter-spacing: .24em; border-radius: 3px; transition: opacity .3s; }
+  .btn:hover { opacity: .8; }
+  .back { display: block; text-align: center; margin: 0 0 72px; font-size: 13px; letter-spacing: .18em; color: var(--navy-soft); }
+
+  footer { background: var(--navy); color: #b9c0d1; padding: 42px 0; text-align: center; font-size: 12px; letter-spacing: .18em; }
+  footer .f-logo { color: #fff; font-size: 16px; font-weight: 700; letter-spacing: .24em; margin-bottom: 12px; }
+
+  @media (max-width: 700px) {
+    nav ul { gap: 18px; font-size: 12px; flex-wrap: wrap; }
+    .page-head { padding: 56px 0; }
+    .page-head h1 { font-size: 21px; }
+    main section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">TK</span>TK PARTNERS</a>
+    <nav>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#service">Service</a></li>
+        <li><a href="index.html#works">Works</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="eyebrow">SERVICE 03</div>
+  <h1>戦略・戦術の設計</h1>
+  <p>「誰に・何を・どう売るか」を定義し、現場の実行レベルまで一気通貫で落とし込みます。</p>
+</div>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <h2 class="label">こんな課題に<small>ISSUES</small></h2>
+    <div class="cards">
+<div class="card"><div class="num">01</div><h3>誰に売るべきか曖昧</h3><p>アプローチ先を「行けるところ」で決めており、勝てる市場・理想の顧客像が定義されていない。</p></div>
+<div class="card"><div class="num">02</div><h3>差別化が言語化できない</h3><p>競合と比べたときの自社の強み・提供価値が、お客様に伝わる言葉になっていない。</p></div>
+<div class="card"><div class="num">03</div><h3>施策が単発で終わる</h3><p>販促やキャンペーンが思いつきの単発になり、検証も改善もされないまま流れてしまう。</p></div>
+</div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2 class="label">提供内容<small>WHAT WE DO</small></h2>
+    <div class="detail">
+      <dl>
+        <dt>市場・顧客像の定義</dt>
+        <dd>市場・競合データを分析し、勝てる市場と理想顧客像(ICP)を特定。「誰に売るか」を明確にします。</dd>
+        <dt>勝ち筋・差別化の設計</dt>
+        <dd>競合に対する差別化と提供価値を言語化し、お客様に伝わる「選ばれる理由」に落とし込みます。</dd>
+        <dt>戦術・KPIへの分解</dt>
+        <dd>戦略をチャネル・施策・KPIに分解し、営業の型化と接続。現場が迷わず動ける実行計画に仕上げます。</dd>
+        <dt>実行支援と継続改善</dt>
+        <dd>数字をモニタリングしながら施策を継続的に最適化し、成果につながるまで伴走します。</dd>
+      </dl>
+    </div>
+    <img class="photo" src="images/service3.jpg" alt="ホワイトボードでの戦略設計">
+  </div>
+</section>
+
+<section class="cta">
+  <p>「まだ課題が整理できていない」という段階でも大丈夫です。<br>まずは60分の営業診断から、お気軽にご相談ください。</p>
+  <a class="btn" href="index.html#contact">お問い合わせはこちら</a>
+</section>
+</main>
+
+<a class="back" href="index.html">← トップページへ戻る</a>
+
+<footer>
+  <div class="f-logo">TK PARTNERS</div>
+  <div>&copy; 2026 TKパートナーズ. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
