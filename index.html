@@ -315,14 +315,9 @@
 
   /* ---------- About ---------- */
   .about-inner {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 70px;
-    align-items: start;
-    margin-top: 70px;
+    max-width: 760px;
+    margin: 56px auto 0;
   }
-  .about-photo { aspect-ratio: 3 / 4; overflow: hidden; }
-  .about-photo svg { width: 100%; height: 100%; }
   .about-text h3 {
     font-size: 22px;
     font-weight: 600;
@@ -334,6 +329,13 @@
     color: var(--ink-light);
     letter-spacing: .2em;
     margin-top: 8px;
+  }
+  .about-quote {
+    border-left: 3px solid var(--navy);
+    padding-left: 22px;
+    margin-top: 28px;
+    font-size: 15px;
+    color: var(--navy);
   }
   .about-text > p { margin-top: 24px; font-size: 14px; }
   .history {
@@ -408,8 +410,6 @@
     .issues { grid-template-columns: 1fr 1fr; }
     .issues-photo img { aspect-ratio: 16 / 9; }
     .services, .works { grid-template-columns: 1fr; }
-    .about-inner { grid-template-columns: 1fr; gap: 40px; }
-    .about-photo { max-width: 320px; margin: 0 auto; }
     .news-list li { flex-direction: column; gap: 4px; }
   }
   @media (max-width: 540px) {
@@ -458,15 +458,12 @@
   <div class="wrap">
     <h2 class="sec-title">About<small>代表プロフィール</small></h2>
     <div class="about-inner">
-      <div class="about-photo">
-        <!-- 実写プロフィール写真に差し替え予定 -->
-        <div class="thumb-ph">PHOTO</div>
-      </div>
       <div class="about-text">
         <h3>田中 大暉</h3>
         <div class="role">TKパートナーズ 代表 / FOUNDER</div>
+        <p class="about-quote">いちばん売れるのは、社長。──その営業力を、組織の資産に変えたい。</p>
         <p>
-          いちばん売れるのは、社長。──でも、社長がずっと最前線に立ち続けなければ回らない会社は、どこかで成長が止まってしまいます。営業の現場に立ち続ける中で、優れた技術やサービスを持ちながら「売る力」が属人化しているために伸び悩む会社を、数多く見てきました。
+          営業の現場に立ち続ける中で、優れた技術やサービスを持ちながら「売る力」が属人化しているために伸び悩む会社を、数多く見てきました。
         </p>
         <p>
           人が増えない時代でも、売れる仕組みは残せる。トップ営業の頭の中にある勝ちパターンを言語化し、誰もが再現できる「型」に変えれば、営業は個人の才能ではなく組織の資産になります。社長が経営に集中でき、社員が自信を持って売れるようになり、地域の良い会社が選ばれ続ける。そのお手伝いを、いちばん近くで伴走しながら実現したい──それがTKパートナーズの原点です。
