@@ -312,6 +312,61 @@
   }
   .work p { font-size: 13px; color: var(--ink); margin-top: 12px; }
 
+  /* ---------- Works tools ---------- */
+  .works-tools { max-width: 880px; margin: 56px auto 0; }
+  .works-tools input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-family: inherit;
+    letter-spacing: .06em;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    outline: none;
+  }
+  .works-tools input:focus { border-color: var(--navy-soft); }
+  .tag-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; justify-content: center; }
+  .tag-chip {
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: .12em;
+    color: var(--navy-soft);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 6px 18px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .tag-chip:hover { border-color: var(--navy-soft); }
+  .tag-chip.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .works-empty {
+    display: none;
+    text-align: center;
+    margin-top: 56px;
+    font-size: 14px;
+    color: var(--ink-light);
+  }
+  .work .wno {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .28em;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .work .chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .work .chips span {
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: var(--navy-soft);
+    background: var(--bg-gray);
+    border-radius: 99px;
+    padding: 3px 12px;
+  }
+
   /* ---------- About ---------- */
   .about-inner {
     max-width: 760px;
@@ -537,77 +592,101 @@
 <section id="works" class="works-sec">
   <div class="wrap">
     <h2 class="sec-title">Works<small>支援実績</small></h2>
+    <div class="works-tools">
+      <input type="search" id="worksSearch" placeholder="キーワードで検索(例:AI、育成、型化)">
+      <div class="tag-chips">
+        <button class="tag-chip active" data-tag="">すべて</button>
+        <button class="tag-chip" data-tag="AI活用">AI活用</button>
+        <button class="tag-chip" data-tag="型化">型化</button>
+        <button class="tag-chip" data-tag="仕組み化">仕組み化</button>
+        <button class="tag-chip" data-tag="戦略設計">戦略設計</button>
+        <button class="tag-chip" data-tag="販促">販促</button>
+        <button class="tag-chip" data-tag="育成">育成</button>
+        <button class="tag-chip" data-tag="ナレッジ">ナレッジ</button>
+        <button class="tag-chip" data-tag="組織文化">組織文化</button>
+        <button class="tag-chip" data-tag="プロダクト">プロダクト</button>
+      </div>
+    </div>
+    <p class="works-empty" id="worksEmpty">該当する実績が見つかりませんでした。条件を変えてお試しください。</p>
     <div class="works">
-      <a class="work" href="works8.html">
+      <a class="work" href="works8.html" data-tags="AI活用 戦略設計 型化">
         <div class="thumb"><img src="images/works8.jpg" alt="AIチップの抽象イメージ"></div>
         <div class="body">
-          <div class="tag">AI × 営業戦略 / 東証プライム上場企業(実施規模200名)</div>
+          <div class="tag"><span class="wno">WORKS 01</span>AI × 営業戦略 / 東証プライム上場企業(実施規模200名)</div>
           <h3>AIを活用したターゲティングで、新規サービスの販路を拡大</h3>
           <p>AIで全国のターゲット候補の公開情報を調査・分析し、「自社サービスと親和性の高い取り組みを行っている先」「関連予算の切れ目を迎える先」を洗い出してリスト化。新たな提案筋を提案資料に型化し、受注コンバージョンを10%改善。部目標の達成に貢献。</p>
+          <div class="chips"><span>#AI活用</span><span>#戦略設計</span><span>#型化</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
-      <a class="work" href="works1.html">
+      <a class="work" href="works1.html" data-tags="型化 育成">
         <div class="thumb"><img src="images/works1.jpg" alt="1on1での相談・レビュー"></div>
         <div class="body">
-          <div class="tag">営業の型化 / 北信越・従業員50名</div>
+          <div class="tag"><span class="wno">WORKS 02</span>営業の型化 / 北信越・従業員50名</div>
           <h3>社長依存の営業から、組織営業への転換</h3>
           <p>営業マニュアル・トークスクリプト・進捗管理シートを整備し、社長のノウハウを形式知化。新人でも再現できる提案型営業の土台を構築。</p>
+          <div class="chips"><span>#型化</span><span>#育成</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
-      <a class="work" href="works2.html">
+      <a class="work" href="works2.html" data-tags="戦略設計 販促">
         <div class="thumb"><img src="images/works2.jpg" alt="チームでの販促企画"></div>
         <div class="body">
-          <div class="tag">戦略・戦術の設計 / 北信越</div>
+          <div class="tag"><span class="wno">WORKS 03</span>戦略・戦術の設計 / 北信越</div>
           <h3>販促キャンペーンの一体設計で新規商談を拡大</h3>
           <p>社内用・顧客用の販促ツール、トークスクリプト、進捗チェックシート、チラシを一体で設計。パート従業員も参加する全社的な販促体制へ。</p>
+          <div class="chips"><span>#戦略設計</span><span>#販促</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
 
-      <a class="work" href="works3.html">
+      <a class="work" href="works3.html" data-tags="戦略設計 仕組み化 ナレッジ">
         <div class="thumb"><img src="images/works3.jpg" alt="業績データとノートPC"></div>
         <div class="body">
-          <div class="tag">営業推進 / 東証プライム上場企業(実施規模100名)</div>
+          <div class="tag"><span class="wno">WORKS 04</span>営業推進 / 東証プライム上場企業(実施規模100名)</div>
           <h3>新規商材の営業推進を、戦略から現場運用まで一気通貫で設計</h3>
           <p>新規オンライン教育サービスの部内営業推進を担当。セグメント設計と戦略・戦術の立案から、商品勉強会・プレ勉強会、架電キャンペーンの企画運営、モニタリング、ナレッジ循環まで、100名規模の推進を一気通貫で設計・運営。</p>
+          <div class="chips"><span>#戦略設計</span><span>#仕組み化</span><span>#ナレッジ</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
-      <a class="work" href="works4.html">
+      <a class="work" href="works4.html" data-tags="育成 仕組み化">
         <div class="thumb"><img src="images/works4.jpg" alt="セミナーでのディスカッション"></div>
         <div class="body">
-          <div class="tag">育成・マネジメント / 東証プライム上場企業(実施規模20名)</div>
+          <div class="tag"><span class="wno">WORKS 05</span>育成・マネジメント / 東証プライム上場企業(実施規模20名)</div>
           <h3>全国のチームリーダー育成と、チーム戦略戦術の立て直しを支援</h3>
           <p>全国のチームリーダーを対象に、戦略共有会の設計、マネジメントセミナーの企画運営を実施。チーム戦略のリプラン設計、部モニタリングの作成、成果発表会の企画運営まで、マネジメント層の成果創出を横断的に支援。</p>
+          <div class="chips"><span>#育成</span><span>#仕組み化</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
-      <a class="work" href="works5.html">
+      <a class="work" href="works5.html" data-tags="ナレッジ 仕組み化">
         <div class="thumb"><img src="images/works5.jpg" alt="付箋を使ったナレッジワークショップ"></div>
         <div class="body">
-          <div class="tag">ナレッジマネジメント / 東証プライム上場企業(実施規模100名)</div>
+          <div class="tag"><span class="wno">WORKS 06</span>ナレッジマネジメント / 東証プライム上場企業(実施規模100名)</div>
           <h3>個人の成果を組織の資産に変える、ナレッジ循環の仕組みを構築</h3>
           <p>表彰制度の定義から、リーダー向けのナレッジ創出支援勉強会、若手向けのナレッジ配信、部門を越えた共有会の企画運営まで。「成果が生まれたら、組織に広がる」サイクルを100名規模で設計・運営。</p>
+          <div class="chips"><span>#ナレッジ</span><span>#仕組み化</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
-      <a class="work" href="works6.html">
+      <a class="work" href="works6.html" data-tags="組織文化 育成">
         <div class="thumb"><img src="images/works6.jpg" alt="笑顔で働くチーム"></div>
         <div class="body">
-          <div class="tag">組織エンゲージメント / 東証プライム上場企業(実施規模80名)</div>
+          <div class="tag"><span class="wno">WORKS 07</span>組織エンゲージメント / 東証プライム上場企業(実施規模80名)</div>
           <h3>仕事を称え合う文化づくりで、組織エンゲージメントを改善</h3>
           <p>80名規模の組織で、エンゲージメントスコアの向上をミッションに推進。「自慢仕事」の共有会や、Vision・Mission・Valueを日々の仕事に接続する浸透施策を企画運営し、エンゲージメントスコアの改善を実現。</p>
+          <div class="chips"><span>#組織文化</span><span>#育成</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
-      <a class="work" href="works7.html">
+      <a class="work" href="works7.html" data-tags="プロダクト 仕組み化">
         <div class="thumb"><img src="images/works7.jpg" alt="ホワイトボードでのプロダクト設計"></div>
         <div class="body">
-          <div class="tag">プロダクト開発連携 / 東証プライム上場企業(プロジェクト12名)</div>
+          <div class="tag"><span class="wno">WORKS 08</span>プロダクト開発連携 / 東証プライム上場企業(プロジェクト12名)</div>
           <h3>営業×企画の連携で、現場の声から新サービスのローンチを実現</h3>
           <p>営業部のエース5名を選抜してプロジェクトを組成。顧客の業務フローを整理した「課題MAP」で現場の改善要望を言語化・一元管理し、プロダクト企画・開発と接続。要件定義から競合分析まで伴走し、新サービスのローンチを実現。</p>
+          <div class="chips"><span>#プロダクト</span><span>#仕組み化</span></div>
           <span class="more">詳しく見る →</span>
         </div>
       </a>
@@ -641,5 +720,37 @@
   <div>&copy; 2026 TKパートナーズ. All Rights Reserved.</div>
 </footer>
 
+<script>
+(function () {
+  var input = document.getElementById('worksSearch');
+  var chips = document.querySelectorAll('.tag-chip');
+  var works = document.querySelectorAll('.works .work');
+  var empty = document.getElementById('worksEmpty');
+  var activeTag = '';
+  function apply() {
+    var q = (input.value || '').trim().toLowerCase();
+    var visible = 0;
+    works.forEach(function (w) {
+      var text = (w.textContent || '').toLowerCase();
+      var tagsAttr = w.getAttribute('data-tags') || '';
+      var okQ = !q || text.indexOf(q) !== -1;
+      var okT = !activeTag || tagsAttr.indexOf(activeTag) !== -1;
+      var show = okQ && okT;
+      w.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    empty.style.display = visible ? 'none' : 'block';
+  }
+  input.addEventListener('input', apply);
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.classList.remove('active'); });
+      c.classList.add('active');
+      activeTag = c.getAttribute('data-tag') || '';
+      apply();
+    });
+  });
+})();
+</script>
 </body>
 </html>
