@@ -469,6 +469,31 @@
   @media (max-width: 540px) {
     .issues { grid-template-columns: 1fr; }
   }
+
+  /* ====== Motion ====== */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-blob { opacity: 0; transform: translateY(24px); animation: rise .9s ease .15s forwards; }
+    .hero-blob h1 { opacity: 0; animation: rise .8s ease .45s forwards; }
+    .hero-blob p { opacity: 0; animation: rise .8s ease .75s forwards; }
+    .hero-art { overflow: hidden; }
+    .hero-art img { animation: heroZoom 16s ease-out .2s forwards; }
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+    @keyframes heroZoom { from { transform: scale(.78); } to { transform: scale(.86); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; transition-delay: var(--d, 0s); }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: box-shadow .3s, padding .3s;
+  }
+  header.scrolled { box-shadow: 0 2px 20px rgba(36,48,77,.08); padding-top: 12px; }
+  header.scrolled nav ul { padding-bottom: 12px; }
+  header.scrolled .logo small { display: none; }
 </style>
 </head>
 <body>
@@ -750,6 +775,34 @@
       apply();
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var header = document.querySelector('header');
+  window.addEventListener('scroll', function () {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var targets = document.querySelectorAll(
+      '.sec-title, .sec-lead, .issue, .issues-photo, .issues-close, .service, .works-tools, .work, .about-text > *, .news-list li, .contact-note, .contact-sec .btn'
+    );
+    targets.forEach(function (el) { el.classList.add('reveal'); });
+    var groups = {};
+    targets.forEach(function (el) {
+      var key = el.parentElement ? Array.prototype.indexOf.call(document.querySelectorAll('*'), el.parentElement) : 0;
+      groups[key] = groups[key] || [];
+      el.style.setProperty('--d', (groups[key].length * 0.12) + 's');
+      groups[key].push(el);
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 </body>
